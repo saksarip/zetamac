@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Zetamac
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an arithmetic game meant for quantitative trading interview practice, and to have a generally good time. It has provided me a lot of relief over these past few difficult months, I hope it can do the same for you. For a live demo check out https://saks-zetamac.herokuapp.com/
 
 ## Available Scripts
 
