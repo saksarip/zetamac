@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import {
+  ThemeProvider,
+  theme,
+  ColorModeProvider,
+  CSSReset,
+} from "@chakra-ui/react";
+import GameStartForm from "./pages/GameStartForm";
+import GamePlayPage from "./pages/GamePlay";
+import GameScorePage from "./pages/GameScore";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <ColorModeProvider>
+        <CSSReset />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<GameStartForm />} />
+            <Route path="/gamePlayPage" element={<GamePlayPage />} />
+            <Route path="/gameScorePage" element={<GameScorePage />} />
+          </Routes>
+        </BrowserRouter>
+      </ColorModeProvider>
+    </ThemeProvider>
   );
 }
-
-export default App;
