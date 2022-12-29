@@ -1,6 +1,6 @@
 # Zetamac
 
-This project is an arithmetic game meant for quantitative trading interview practice, and to have a generally good time. It has provided me a lot of relief over these past few difficult months, I hope it can do the same for you. For a live demo check out https://saks-zetamac.herokuapp.com/
+This project is an arithmetic game meant for quantitative trading interview practice, and to have a generally good time. Heavily inspired https://arithmetic.zetamac.com/, big ups to whoever made this site. It has provided me a lot of relief over these past few difficult months, I hope it can do the same for you. For a live demo check out https://saks-zetamac.herokuapp.com/
 
 ## Available Scripts
 
