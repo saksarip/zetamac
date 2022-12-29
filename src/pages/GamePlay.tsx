@@ -33,12 +33,21 @@ function GamePlayPage() {
   const createProblemList = () => {
     const userInputs = location.state;
     const newProblemList: Problem[] = [];
+    const numOpsToInclude: number = [
+      userInputs.isAdditionChecked,
+      userInputs.isSubtractionChecked,
+      userInputs.isMultiplicationChecked,
+      userInputs.isDivisionChecked,
+    ].reduce((partialSum, a) => partialSum + a, 0);
+
+    const numProblemsPerOp: number = Math.floor(200 / numOpsToInclude);
+
     if (userInputs.isAdditionChecked) {
       const additionLowerBoundOne: number = userInputs.additionLowerBoundOne;
       const additionUpperBoundOne: number = userInputs.additionUpperBoundOne;
       const additionLowerBoundTwo: number = userInputs.additionLowerBoundTwo;
       const additionUpperBoundTwo: number = userInputs.additionUpperBoundTwo;
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < numProblemsPerOp; i++) {
         const addNumOne: number = randomIntFromInterval(
           additionLowerBoundOne,
           additionUpperBoundOne
@@ -62,7 +71,7 @@ function GamePlayPage() {
       const additionUpperBoundOne: number = userInputs.additionUpperBoundOne;
       const additionLowerBoundTwo: number = userInputs.additionLowerBoundTwo;
       const additionUpperBoundTwo: number = userInputs.additionUpperBoundTwo;
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < numProblemsPerOp; i++) {
         const subAnswer: number = randomIntFromInterval(
           additionLowerBoundOne,
           additionUpperBoundOne
@@ -91,7 +100,7 @@ function GamePlayPage() {
         userInputs.multiplicationLowerBoundTwo;
       const multiplicationUpperBoundTwo: number =
         userInputs.multiplicationUpperBoundTwo;
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < numProblemsPerOp; i++) {
         const multNumOne: number = randomIntFromInterval(
           multiplicationLowerBoundOne,
           multiplicationUpperBoundOne
@@ -119,7 +128,8 @@ function GamePlayPage() {
         userInputs.multiplicationLowerBoundTwo;
       const multiplicationUpperBoundTwo: number =
         userInputs.multiplicationUpperBoundTwo;
-      for (let i = 0; i < 50; i++) {
+
+      for (let i = 0; i < numProblemsPerOp; i++) {
         const divAnswer: number = randomIntFromInterval(
           multiplicationLowerBoundOne,
           multiplicationUpperBoundOne
