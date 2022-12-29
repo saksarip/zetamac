@@ -13,6 +13,7 @@ function GameScorePage() {
 
   const [percentile, setPercentile] = useState<number>(0);
   const [numGames, setNumGames] = useState<number>(0);
+  const [alreadyInserted, setAlreadyInserted] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -33,6 +34,7 @@ function GameScorePage() {
       score: location.state.score,
       game_length: location.state.gameLength,
     });
+    return error;
   };
 
   const calcPercentile = (arr: Array<number>, val: number) => {
@@ -55,9 +57,13 @@ function GameScorePage() {
           data !== null ? data.map((score) => score.score) : [];
         setPercentile(calcPercentile(scoreVals, location.state.score));
       });
-      insertNewScore().then((error) => {
-        console.log(error);
-      });
+      if (!alreadyInserted) {
+        console.log("Insertion happening");
+        setAlreadyInserted(true);
+        insertNewScore().then((error) => {
+          console.log(error);
+        });
+      }
     }
   }, []);
 
@@ -75,8 +81,10 @@ function GameScorePage() {
               minimumFractionDigits: 1,
             })}{" "}
           </Text>
-
-          <Text fontSize="5xl"> Out of {numGames} total games</Text>
+          <Text fontSize="5xl">
+            {" "}
+            Out of {Math.floor(numGames / 2)} total games
+          </Text>
           <Button
             width="full"
             mt={4}
