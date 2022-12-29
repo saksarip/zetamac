@@ -52,6 +52,62 @@ function GameStartForm() {
 
   const [gameLength, setGameLength] = useState<number>(120);
 
+  const setIsAdditionCheckedWithVal = () => {
+    // Function to ensure changing the include addition doesn't violate the need for atleast one operation
+    if (!isAdditionChecked) {
+      setIsAdditionChecked(true);
+      return;
+    }
+    const hasAtleastOneOtherOp: boolean =
+      isSubtractionChecked || isMultiplicationChecked || isDivisionChecked;
+
+    if (hasAtleastOneOtherOp) {
+      setIsAdditionChecked(false);
+    }
+  };
+
+  const setIsSubtractionCheckedWithVal = () => {
+    // Function to ensure changing the include addition doesn't violate the need for atleast one operation
+    if (!isSubtractionChecked) {
+      setIsSubtractionChecked(true);
+      return;
+    }
+    const hasAtleastOneOtherOp: boolean =
+      isAdditionChecked || isMultiplicationChecked || isDivisionChecked;
+
+    if (hasAtleastOneOtherOp) {
+      setIsSubtractionChecked(false);
+    }
+  };
+
+  const setIsMultiplicationCheckedWithVal = () => {
+    // Function to ensure changing the include addition doesn't violate the need for atleast one operation
+    if (!isMultiplicationChecked) {
+      setIsMultiplicationChecked(true);
+      return;
+    }
+    const hasAtleastOneOtherOp: boolean =
+      isAdditionChecked || isSubtractionChecked || isDivisionChecked;
+
+    if (hasAtleastOneOtherOp) {
+      setIsMultiplicationChecked(false);
+    }
+  };
+
+  const setIsDivisionCheckedWithVal = () => {
+    // Function to ensure changing the include addition doesn't violate the need for atleast one operation
+    if (!isDivisionChecked) {
+      setIsDivisionChecked(true);
+      return;
+    }
+    const hasAtleastOneOtherOp: boolean =
+      isAdditionChecked || isSubtractionChecked || isMultiplicationChecked;
+
+    if (hasAtleastOneOtherOp) {
+      setIsDivisionChecked(false);
+    }
+  };
+
   const navigate = useNavigate();
   const goToGamePage = () => {
     console.log("We got here brothers");
@@ -93,7 +149,7 @@ function GameStartForm() {
                 <IconButton
                   colorScheme="teal"
                   variant={isAdditionChecked ? "solid" : "outline"}
-                  onClick={() => setIsAdditionChecked(!isAdditionChecked)}
+                  onClick={setIsAdditionCheckedWithVal}
                   aria-label="Call Segun"
                   size="md"
                   icon={<AdditionIcon />}
@@ -148,7 +204,7 @@ function GameStartForm() {
                 <IconButton
                   colorScheme="teal"
                   variant={isSubtractionChecked ? "solid" : "outline"}
-                  onClick={() => setIsSubtractionChecked(!isSubtractionChecked)}
+                  onClick={setIsSubtractionCheckedWithVal}
                   aria-label="Call Segun"
                   size="md"
                   icon={<SubtractionIcon />}
@@ -163,9 +219,7 @@ function GameStartForm() {
                 <IconButton
                   colorScheme="teal"
                   variant={isMultiplicationChecked ? "solid" : "outline"}
-                  onClick={() =>
-                    setIsMultiplicationChecked(!isMultiplicationChecked)
-                  }
+                  onClick={setIsMultiplicationCheckedWithVal}
                   aria-label="Call Segun"
                   size="md"
                   icon={<MultiplicationIcon />}
@@ -220,7 +274,7 @@ function GameStartForm() {
                 <IconButton
                   colorScheme="teal"
                   variant={isDivisionChecked ? "solid" : "outline"}
-                  onClick={() => setIsDivisionChecked(!isDivisionChecked)}
+                  onClick={setIsDivisionCheckedWithVal}
                   aria-label="Call Segun"
                   size="md"
                   icon={<DivisionIcon />}
