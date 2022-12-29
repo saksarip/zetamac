@@ -82,7 +82,8 @@ function GameStartForm() {
           <Text maxWidth="600px" marginTop="10px">
             The Arithmetic Game is a fast-paced speed drill where yousolve as
             many arithmetic problems as you can. Just select what operations you
-            want, their number ranges, and for how long you want to play.
+            want, their number ranges, and for how long you want to play the
+            game.
           </Text>
         </Box>
         <Box my={4} textAlign="left">
