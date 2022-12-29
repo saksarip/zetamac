@@ -81,10 +81,7 @@ function GameScorePage() {
               minimumFractionDigits: 1,
             })}{" "}
           </Text>
-          <Text fontSize="5xl">
-            {" "}
-            Out of {Math.floor(numGames / 2)} total games
-          </Text>
+          <Text fontSize="5xl"> Out of {numGames} total games</Text>
           <Button
             width="full"
             mt={4}
